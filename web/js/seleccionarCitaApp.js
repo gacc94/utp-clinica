@@ -1,6 +1,3 @@
-
-
-
 //Boton de Hora: Obtener la hora 
 $('.btn-hora').on('click', function () {
     $('#resumenpedido').show();

@@ -74,7 +74,7 @@ public class UsuarioValidator {
         String mensaje = "";
         boolean resultado = pass.matches(expassword); //true
         if (!resultado) { //si me da falso
-            mensaje = "La contraseña tiene que ser de 4 a 12 dígitos.";
+            mensaje = "La clave ingresada tiene que ser de 4 a 12 dígitos.";
         }
         return mensaje;
 
