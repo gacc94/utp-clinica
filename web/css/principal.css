@@ -1,0 +1,15 @@
+body{
+    background: #D9F2F1; /*primero colocamos el fondo*/
+    font-family: 'Roboto', sans-serif;
+}
+
+.bgblanco{
+    background: #FFFFFF;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 50px;
+}
+.programarcita:hover {
+    background-color: #44469D;
+    color: #fff !important;
+}

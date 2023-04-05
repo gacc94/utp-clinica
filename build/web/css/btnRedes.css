@@ -1,0 +1,112 @@
+/*Ocultamos el Checkbox*/
+#btn-mas{
+    display: none;
+}
+/*damos posición a todo el contenido*/
+.contenedor{
+    position:fixed;
+    bottom: 40px;
+    right: 40px;
+
+}
+/*Editamos el icono del boton*/
+.redes a, .icon-mas2{
+	display: block; /*Se ordena en una columna*/
+	text-decoration: none;
+	background-color: #99d3df;
+	color: #fff;
+	width: 55px;
+	height: 55px;
+	line-height: 55px;
+	text-align: center;
+	border-radius: 50%;
+	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
+	transition: all 500ms ease;
+}
+
+.redes a:hover{
+	background: #fff;
+	color: #99d3df;
+}
+/*Ocultar todas las a*/
+.redes a{
+	margin-bottom: -15px;
+	opacity: 0;
+	visibility: hidden;
+}
+/*Si da click se muestra*/
+#btn-mas:checked~ .redes a{
+	margin-bottom: 10px;
+	opacity: 1;
+	visibility: visible;
+}
+
+/*estilos de botón*/
+.icon-mas2{
+	cursor: pointer;
+	background: #88bbd6;
+	font-size: 23px;
+}
+
+#btn-mas:checked~ .btn-mas .icon-mas2{
+	transform: rotate(137deg);
+	font-size: 25px;
+}
+
+.icon-mas2:hover{
+	transform: rotate(360deg);
+}
+/*Efecto sobre el contenedor del icono del boton +*/
+.btn-mas{
+	border-radius: 50%;
+	transition: ease 0.3s;
+	animation: efecto 1.2s infinite;/*llamamos a efecto, duración de animación, repetición  en modo infinito*/
+
+}
+.btn-mas:hover{
+	transform: scale(1.0);
+	transition: 0.3s;
+}
+
+
+@keyframes efecto{
+	0%{
+		box-shadow: 0 0 0 0 #99d3df;/*damos color inicial del aura*/
+	}
+	100%{
+		box-shadow: 0 0 0 25px rgba(0,0,0,0);/*damos transparencia al final del aura*/
+	}
+}
+
+/*https://www.youtube.com/watch?v=yFgkey2ALlo&ab_channel=AlexCGDesign*/
+
+	/*
+	animation-name: nombre_keyframes;
+	animation-duration: 1s;
+	animation-iteration-count: 
+		3;
+		infinite;
+	animation-direction: 
+		normal(0% al 100%)
+		reverse(del 100% al 0%)
+		alternate(0%-100%-0%)
+		alternate-reverse(100%-0%-100%)
+	animation-fill-mode: 
+		forwards(una vez que termina la animación los estilos del ultimo punto de la animación se mantenga)
+		backwards(los elementos del inicio permanecen, necesita al animation-delay)
+	animation-delay: 2s;
+		both: tendra comportamiento forwards y backwards
+	animation-timing-function: 
+		ease (aumenta la velocidad desde la mitad);
+		ease-in (comienza lento y se va aumentando);
+		ease-in-out (lento, acelera y lento);
+		linear (velocidad constante)
+	*/
+
+	/*
+	.circle:hover{
+		animation-play-state:
+			running; si pasas el mouses se mueve	
+			paused; si pasas el mouses se detiene
+	}
+	*/
