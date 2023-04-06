@@ -1,0 +1,50 @@
+--
+-- Base de datos: `bdcitamedicaweb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `turnos`
+--
+
+CREATE TABLE `turnos` (
+  `idTurno` int(11) NOT NULL,
+  `fecha` varchar(20) NOT NULL,
+  `hora` varchar(10) NOT NULL,
+  `especialidad` varchar(50) NOT NULL,
+  `medico` varchar(100) NOT NULL,
+  `disponible` char(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `turnos`
+--
+
+INSERT INTO `turnos` (`idTurno`, `fecha`, `hora`, `especialidad`, `medico`, `disponible`) VALUES
+(1, '10/04/2023', '08:30', 'Ginecologia', 'Cozar Octavio Randall', 'si');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `turnos`
+--
+ALTER TABLE `turnos`
+  ADD PRIMARY KEY (`idTurno`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `turnos`
+--
+ALTER TABLE `turnos`
+  MODIFY `idTurno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

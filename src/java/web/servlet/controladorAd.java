@@ -1,6 +1,7 @@
 package web.servlet;
 
 import dao.impl.DaoEspecialidadImpl;
+import dao.impl.DaoTurnoImpl;
 import dao.impl.DaoUsuarioImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,11 +22,13 @@ public class controladorAd extends HttpServlet {
     
     DaoUsuarioImpl usuarioDAO;
     DaoEspecialidadImpl especialidadDAO;
+    DaoTurnoImpl turnoDAO;
         
     public controladorAd() {
         super();
         usuarioDAO = new DaoUsuarioImpl(); 
         especialidadDAO = new DaoEspecialidadImpl();
+        turnoDAO = new DaoTurnoImpl();
     }
         
     
@@ -52,6 +55,17 @@ public class controladorAd extends HttpServlet {
                 try {
                     request.setAttribute("especialidadesList", especialidadDAO.listar());
                     request.getRequestDispatcher("especialidad.jsp").forward(request, response);
+                                      
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+                
+             case "listarTurnos":
+               // ruta = "usuarioPanelDerecho.jsp";
+                try {
+                    request.setAttribute("turnosList", turnoDAO.listar());
+                    request.getRequestDispatcher("turnos.jsp").forward(request, response);
                                       
                 } catch (Exception e) {
                     e.printStackTrace();
