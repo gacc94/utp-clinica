@@ -1,5 +1,76 @@
+//espresiones regulares
+var expresiones = {
+	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	password: /^.{4,12}$/, // 4 a 12 digitos.
+	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+	tarjeta: /^[0-9]{13,20}$/, // 7 a 14 numeros.
+        cvv : /^[0-9]{3}$/
+}
+ var valStatusTarjeta = false;
+ var valStatusCvv = false;
+ var valStatusCorreo = false;
+ 
 
+//Validamos input tarjeta
+$('#tarjeta').on('keyup', function (event) { 
+  if(expresiones.tarjeta.test($('#tarjeta').val())){
+      console.log("tarjeta valida");
+      $('#errorTarjeta').removeClass('text-danger');
+      $('#errorTarjeta').addClass('text-success');
+      $('#errorTarjeta').text("El numero ingresado es correcto");
+      $('#errorTarjeta').show();
+      valStatusTarjeta = true;
+  }else{
+      console.log("tarjeta invalida");
+      $('#errorTarjeta').removeClass('text-success');
+      $('#errorTarjeta').addClass('text-danger');
+      $('#errorTarjeta').text("El numero ingresado debe tener 13 a 20 digitos");
+      $('#errorTarjeta').show();
+      valStatusTarjeta = false;
+  }
 
+});
+
+//validamos input ccv
+$('#cvv').on('keyup', function (event) { 
+  if(expresiones.cvv.test($('#cvv').val())){
+      console.log("cvv valida");
+      $('#errorCvv').removeClass('text-danger');
+      $('#errorCvv').addClass('text-success');
+      $('#errorCvv').text("El cvv ingresado es correcto");
+      $('#errorCvv').show();
+      valStatusCvv = true;
+  }else{
+      console.log("cvv invalida");
+      $('#errorCvv').removeClass('text-success');
+      $('#errorCvv').addClass('text-danger');
+      $('#errorCvv').text("El cvv ingresado debe tener 3 digitos");
+      $('#errorCvv').show();
+      valStatusCvv = false;
+  }
+
+});
+
+//validamos input correo
+$('#correo').on('keyup', function (event) { 
+  if(expresiones.correo.test($('#correo').val())){
+      console.log("correo valida");
+      $('#errorEmail').removeClass('text-danger');
+      $('#errorEmail').addClass('text-success');
+      $('#errorEmail').text("El formato de correo es correcto");
+      $('#errorEmail').show();
+      valStatusCorreo = true;
+  }else{
+      console.log("correo invalida");
+      $('#errorEmail').removeClass('text-success');
+      $('#errorEmail').addClass('text-danger');
+      $('#errorEmail').text("El formato de correo no es el correcto");
+      $('#errorEmail').show();
+      valStatusCorreo = false;
+  }
+
+});
 
 carritoHTML();
 function carritoHTML() {
@@ -44,8 +115,19 @@ function carritoHTML() {
 //boton que abre la pasarela
 $('.btn-pasarela').on('click', function (e) {
     e.preventDefault();
+    console.log($('#terminos').is(':checked'));
+    if($('#terminos').is(':checked')){
     console.log('Se abre pasarela...');
     $('#modalPago').modal('show');
+    }else{
+      Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No has marcado terminos y condiciones',
+            footer: 'Es importante que acepte los terminos de la compra.'
+        });
+    }
+
 
 
 });
@@ -109,7 +191,8 @@ $('.btn-pagar').on('click', function (e) {
     console.log("email: " + email);
     var id_paciente = $('.id_paciente').val();
     console.log("id_paciente: " + id_paciente);
-    if (tarjeta !== "" && mes !== "" && year !== "" && cvv !== "" && email !== "") {
+
+    if (tarjeta !== "" && mes !== "Selecciona" && year !== "Selecciona" && cvv !== "" && email !== "" && valStatusTarjeta && valStatusCvv && valStatusCorreo) {
         //inicia sweet alert
         Swal.fire({
             title: '¿Confirmas el pago?',
@@ -175,6 +258,8 @@ $('.btn-pagar').on('click', function (e) {
     }
     // fin validacion
 });
+
+
 
 
 

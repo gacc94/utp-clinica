@@ -119,8 +119,8 @@
                                                                           class="fa fa-credit-card"></i> Pagar</a>
                 </div>
                 <div style="width: 80%;margin:20px auto;" class="row">
-                    <p style="margin-bottom: 0;color: #5AC5C3;font-weight: bold;"><input style="margin-right: 5px;"
-                                                                                         type="checkbox" name="" id="">Acepto los Términos y
+                    <p style="margin-bottom: 0;color: #5AC5C3;font-weight: bold;">
+                        <input style="margin-right: 5px;" type="checkbox" name="" id="terminos">Acepto los Términos y
                         Condiciones y la Política de Privacidad establecidos (Lea detenidamente esta sección)
                     </p>
                     <ul>
@@ -154,44 +154,81 @@
                     </div>
                     <div class="modal-body">
                         <p style="color:#ffb300; font-weight: bold;font-size: 30px;"><i class="fab fa-cc-visa"></i> Pago de citas en linea</p>
-                        <div class="col-12  py-3 px-3">
+                        <div id="formPago" class="col-12  py-3 px-3">
                             <div class="row">
                                 <!-- Grupo: Numero de Tarjeta -->
                                 <div class="form-group">
                                     <label for="tarjeta">Número de Tarjeta</label>
-                                    <input type="text" class="form-control tarjeta" name="tarjeta" 
-                                           placeholder="•••• •••• •••• ••••" value="123" >   
+                                    <input id="tarjeta" type="number" class="form-control tarjeta" name="tarjeta" 
+                                           placeholder="•••• •••• •••• ••••" value="" >   
                                 </div>
+                                 <div class="form-group">
+                                    <label id ="errorTarjeta" class="text-danger fw-bold" style="display: none" for="" ></label>
+                                </div>
+                                
                                 <div class="form-group">
                                     <label>Fecha de expiración de la tarjeta</label>
                                     <div class="row">
                                         <div class="col-6">
                                             <select class="form-select mes" name="cbomes" id="">
-                                                <option value="">Mes</option>
-                                                <option value="">01</option>
+                                                <option value="Selecciona">Selecciona</option>
+                                                <option value="01">01</option>
+                                                <option value="02">02</option>
+                                                <option value="03">03</option>
+                                                <option value="04">04</option>
+                                                <option value="05">05</option>
+                                                <option value="06">06</option>
+                                                <option value="07">07</option>
+                                                <option value="08">08</option>
+                                                <option value="09">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
                                             </select>
                                         </div>
                                         <div class="col-6">
                                             <select class="form-select year" name="cboyear" id="">
-                                                <option value="">Año</option>
-                                                <option value="">2021</option>
+                                                <option value="Selecciona">Selecciona</option>
+                                                <option value="2030">2030</option>
+                                                <option value="2029">2029</option>
+                                                <option value="2028">2028</option>
+                                                <option value="2027">2027</option>
+                                                <option value="2026">2026</option>
+                                                <option value="2025">2025</option>
+                                                <option value="2024">2024</option>
+                                                <option value="2023">2023</option>
+                                                <option value="2022">2022</option>
+                                                <option value="2021">2021</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
+                                 <div class="form-group">
+                                    <label id ="errorMes" class="text-danger fw-bold" style="display: none" for="" >El mes no tiene el formato correcto</label>
+                                </div>
+                                <div class="form-group">
+                                    <label id ="errorAnio" class="text-danger fw-bold" style="display: none" for="" >El año no tiene el formato correcto</label>
+                                </div>
                                 <!-- Grupo: CVV -->
                                 <div class="form-group">
                                     <label for="cvv">CVV</label>
-                                    <input type="text" class="form-control cvv" name="cvv" value="123"
+                                    <input id="cvv" type="number" class="form-control cvv" min="1" max="3" name="cvv" value=""
                                            placeholder="Ingresa 3 digitos">
+                                </div>
+                                 <div class="form-group">
+                                    <label id ="errorCvv" class="text-danger fw-bold" style="display: none" for="" ></label>
                                 </div>
                                 <!-- Grupo: Email -->
                                 <div class="form-group">
                                     <label for="email" >Email</label>
-                                    <input type="email" class="form-control email" name="email" value="jona@gmail.com"
+                                    <input id="correo" type="email" class="form-control email" name="email" value=""
                                            placeholder="Jhon@gmail.com" value="">
-
                                 </div>
+                                <div class="form-group">
+                                    <label id ="errorEmail" class="text-danger fw-bold" style="display: none" for="" >El email no tiene el formato correcto</label>
+                                </div>
+                                
+                                
                             </div>
 
                         </div>
