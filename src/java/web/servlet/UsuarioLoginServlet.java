@@ -49,15 +49,7 @@ public class UsuarioLoginServlet extends HttpServlet {
     
     //Reserva
     DaoReservaImpl daores = new DaoReservaImpl();
-    // Lista Usuarios
-    DaoUsuarioImpl usuarioDAO;
-       
-    public UsuarioLoginServlet() {
-        super();
-        usuarioDAO = new DaoUsuarioImpl();  
-    }
-        
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
