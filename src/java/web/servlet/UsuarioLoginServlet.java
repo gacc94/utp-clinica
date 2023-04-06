@@ -4,6 +4,7 @@ import dao.impl.DaoDetalle_VentasImpl;
 import dao.impl.DaoPacienteImpl;
 import dao.impl.DaoProductosImpl;
 import dao.impl.DaoReservaImpl;
+import dao.impl.DaoUsuarioImpl;
 import dao.impl.DaoUsuarioRegistroImpl;
 import dao.impl.DaoVentaImpl;
 import dto.Carrito;
@@ -48,6 +49,14 @@ public class UsuarioLoginServlet extends HttpServlet {
     
     //Reserva
     DaoReservaImpl daores = new DaoReservaImpl();
+    // Lista Usuarios
+    DaoUsuarioImpl usuarioDAO;
+       
+    public UsuarioLoginServlet() {
+        super();
+        usuarioDAO = new DaoUsuarioImpl();  
+    }
+        
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -184,6 +193,7 @@ public class UsuarioLoginServlet extends HttpServlet {
                     request.getRequestDispatcher("historialCitas.jsp").forward(request, response);
                 } 
                 break;
+                            
             default:
                 request.getRequestDispatcher("index.jsp").forward(request, response);
                 break;

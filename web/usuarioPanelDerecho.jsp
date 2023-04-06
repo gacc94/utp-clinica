@@ -3,7 +3,7 @@
     Created on : 24/11/2022, 02:57:49 PM
     Author     : Jonathan
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -40,14 +40,15 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <c:forEach items="${usuarioList}" var='e'>
                                 <tr>
-                                    <td>1</td>
-                                    <td>CODPA77665544</td>
-                                    <td>Paciente</td>
-                                    <td>Jonathan Paniagua Ccahuana</td>
-                                    <td>jpaniagua@gmail.com</td>
-                                    <td>983514699</td>
-                                    <td>Activo</td>
+                                    <td>${e.idusuario}</td>
+                                    <td>${e.id_paciente}</td>
+                                    <td>${e.idrol}</td>
+                                    <td>${e.apellido}</td>
+                                    <td>${e.email}</td>
+                                    <td>${e.telefono}</td>
+                                    <td>${e.estado}</td>
                                     <td>
                                         <a class="btn btn-warning text-light btn-editar" href=""><i class="fas fa-pen"></i></a>
                                     </td>
@@ -56,7 +57,10 @@
                                         <button class="btn btn-danger mibtn-cancelar" data-id="${ob.idusuario}" ><i class="fas fa-trash"></i></button>
 
                                     </td>
+
                                 </tr>
+                            </c:forEach>
+                                    
                             </tbody>
                         </table>
                     </div>

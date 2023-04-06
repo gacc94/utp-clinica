@@ -34,6 +34,7 @@ public class DaoUsuarioImpl implements DaoUsuario {
                 ob.setNombrerol(rs.getString("NOMBREROL"));
                 ob.setNombre(rs.getString("NOMBRE"));
                 ob.setApellido(rs.getString("APELLIDO"));
+                ob.setId_paciente(rs.getString("ID_PACIENTE")); //NO ESTABA IMPLMENTADO, PERO SE REPITE EN tbl paciente
                 ob.setDni(rs.getString("NUM_DOCUMENTO"));
                 ob.setEmail(rs.getString("EMAIL"));
                 ob.setTelefono(rs.getString("TELEFONO"));

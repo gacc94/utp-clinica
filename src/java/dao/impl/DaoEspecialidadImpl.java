@@ -2,6 +2,7 @@ package dao.impl;
 
 import dao.DaoEspecialidad;
 import dto.Especialidad;
+import dto.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,14 +11,44 @@ import util.ConexionBD;
 
 public class DaoEspecialidadImpl implements DaoEspecialidad {
 
+    Especialidad es = null;
+    ArrayList<Especialidad> lista = null;
     Connection con;
     ConexionBD cn = new ConexionBD();
     PreparedStatement ps;
     ResultSet rs;
+        
+    private String mensaje;
 
     @Override
     public ArrayList<Especialidad> listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT E.nombre_especialidad,E.id_especialidad,E.precio,M.id_medico,M.nombres_medico,M.apellido_paterno_medico," +
+                        "M.apellido_materno_medico,C.nombre_consultorio " +
+                        "FROM medico M " +
+                        "INNER JOIN especialidad E ON E.id_medico=M.id_medico " +
+                        "INNER JOIN consultorio C ON C.id_medico = M.id_medico";
+        try {
+            
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            lista = new ArrayList<>();
+            while (rs.next()) {
+                es = new Especialidad();
+                es.setId_especialidad(rs.getString("E.id_especialidad"));
+                es.setNombre_especialidad(rs.getString("E.nombre_especialidad"));
+                es.setNombres_medico(rs.getString("M.nombres_medico"));
+                es.setApellido_paterno_medico(rs.getString("M.apellido_paterno_medico"));
+                es.setApellido_materno_medico(rs.getString("M.apellido_materno_medico")); 
+                es.setNombre_consultorio(rs.getString("C.nombre_consultorio"));
+                es.setPrecio(rs.getDouble("E.precio"));
+                lista.add(es);
+            }
+
+        } catch (Exception e) {
+        }
+
+        return lista;
     }
 
     @Override
