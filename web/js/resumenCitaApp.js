@@ -221,7 +221,7 @@ $('.btn-pagar').on('click', function (e) {
                             var fecha = reserva.fecha;
                             var hora = reserva.hora;
                             var id_usuario = reserva.codigousuario;
-                            var id_medico = reserva.codigo_medico;
+                           // var id_medico = reserva.codigo_medico;
                             var id_especialidad = reserva.id_especialidad;
                             var precio = reserva.precio;
                             
@@ -230,7 +230,7 @@ $('.btn-pagar').on('click', function (e) {
                             $.ajax({
                                 type: 'POST',
                                 url: url,
-                                data: "id_usuario=" + id_usuario + "&id_medico=" + id_medico + "&id_especialidad=" + id_especialidad + "&fecha=" + fecha + "&hora= " + hora + "&precio=" + precio + "&id_paciente=" + id_paciente,
+                                data: "id_usuario=" + id_usuario  + "&id_especialidad=" + id_especialidad + "&fecha=" + fecha + "&hora= " + hora + "&precio=" + precio,
                                 success: function (data, textStatus, jqXHR) {
                                     console.log('Pagando...');
                                     localStorage.removeItem('carritoLS');

@@ -54,23 +54,16 @@ public class ProcesarServlet extends HttpServlet {
                     System.out.println("hora: " + hora);
                     String id_usuario = request.getParameter("id_usuario");
                     System.out.println("id de usuario: " + id_usuario);
-                    String id_medico = request.getParameter("id_medico");
-                    System.out.println("id de medico: " + id_medico);
                     String id_especialidad = request.getParameter("id_especialidad");
                     System.out.println("id de especialidad: " + id_especialidad);
                     Double precio = Double.parseDouble(request.getParameter("precio"));
                     System.out.println("precio: " + precio);
-                    String id_paciente = request.getParameter("id_paciente");
-                    System.out.println("id_paciente: " + id_paciente);
-                    //lo metemos en un objeto
                     Reserva re = new Reserva();
                     re.setFecha(fecha);
                     re.setHora(hora);
-                    re.setId_medico(id_medico);
                     re.setId_especialidad(id_especialidad);
                     re.setId_usuario(id_usuario);
                     re.setPrecio(precio);
-                    re.setId_paciente(id_paciente);
                     boolean r = daore.agregar(re);
                     System.out.println("resultado:" + r);
 

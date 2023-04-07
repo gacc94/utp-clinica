@@ -43,22 +43,19 @@ public class DaoReservaImpl implements DaoReserva {
         StringBuilder sql = new StringBuilder();
 
         sql.append("INSERT INTO RESERVACION ")
-                .append("(FECHA_CITA, HORA_CITA, ID_MEDICO, ID_ESPECIALIDAD, IDUSUARIO, PRECIO, ID_PAGO, ESTADO, ID_PACIENTE, FECHA_RESERVA) ")
-                .append("VALUES(?,?,?,?,?,?,?,?,?,now())");
+                .append("(FECHA_CITA, HORA_CITA, ID_ESPECIALIDAD, IDUSUARIO, PRECIO, ID_PAGO, ESTADO, FECHA_RESERVA) ")
+                .append("VALUES(?,?,?,?,?,?,?,now())");
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql.toString());
 
             ps.setString(1, ob.getFecha());
             ps.setString(2, ob.getHora());
-            ps.setString(3, ob.getId_medico());
-            ps.setString(4, ob.getId_especialidad());
-            ps.setString(5, ob.getId_usuario());
-            ps.setDouble(6, ob.getPrecio());
-            ps.setString(7, "2");
-            ps.setString(8, "Pendiente"); 
-            System.out.println("id_paciente: " + ob.getId_paciente());
-            ps.setString(9, ob.getId_paciente());
+            ps.setString(3, ob.getId_especialidad());
+            ps.setString(4, ob.getId_usuario());
+            ps.setDouble(5, ob.getPrecio());
+            ps.setString(6, "2");
+            ps.setString(7, "Pendiente"); 
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error en el Script DaoReservaImpl - agregar ");
@@ -81,9 +78,9 @@ public class DaoReservaImpl implements DaoReserva {
     public ArrayList<Reserva> listarxIdCliente(int idCliente) {
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT u.NOMBRE, u.APELLIDO, e.nombre_especialidad, m.nombres_medico, m.apellido_paterno_medico, m.apellido_materno_medico, r.FECHA_CITA, r.HORA_CITA, r.PRECIO,r.ESTADO, r.FECHA_RESERVA ")
-                .append("FROM especialidad e INNER JOIN medico m on e.id_medico = m.id_medico ")
-                    .append("INNER JOIN reservacion r on r.ID_MEDICO = m.id_medico ")
-                .append("INNER JOIN usuario u on r.IDUSUARIO = u.IDUSUARIO WHERE u.IDUSUARIO=" + idCliente + " ORDER BY r.FECHA_RESERVA DESC");
+                .append("FROM usuario u INNER JOIN reservacion r on u.IDUSUARIO= r.idusuario  ")
+                    .append("INNER JOIN especialidad e on r.ID_ESPECIALIDAD = e.id_especialidad ")
+                .append("INNER join medico m on m.id_medico= e.id_medico WHERE u.IDUSUARIO=" + idCliente + " ORDER BY r.FECHA_RESERVA DESC");
 
         try {
             con = cn.Conexion();

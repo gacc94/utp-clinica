@@ -78,12 +78,12 @@
             <!--Body-->
             <div style="text-align: center;" class="row color-gris">
                 <div style="display: flex;flex-direction: column;align-items: center; justify-content: center; background: #5AC5C3" class="col-md-6">
-                    <span style="font-size: 60px; color: #FFF;font-weight: bold;">Hola Jonathan!</span><br>
+                    <span style="font-size: 60px; color: #FFF;font-weight: bold;">Hola ${user.getNombre()}!</span><br>
                     <span style="font-size: 40px; color: #FFF;font-weight: bold;">Tenemos estas opciones para ti!</span><br>
                     <div class="btnatencion" style="margin-top: 40px;background: #fff;border-radius: 50px;width: 250px;padding: 10px 0px;">
                         <a class="text-decoration-none" href="seleccionarCita.jsp">
                             <img style="width: 100px;" src="img/icon-doctor.svg" /><br>
-                            <span  style="color: #5AC5C3;font-weight: bold">Atenciones precensiales</span>
+                            <span  style="color: #5AC5C3;font-weight: bold">Atenciones presenciales</span>
                         </a>
                     </div>
                 </div>
